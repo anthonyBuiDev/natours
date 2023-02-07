@@ -2,6 +2,6 @@
 
 Built using modern technologies: node.js, express, mongoDB, mongoose
 
-Feature: Login, Booking, Payment, Update user Data,Password.
+Feature: Login,Sign up,Booking, Payment, Update user Data,Password.
 
-Updating: Sign up, Mangage tour, user, reviews, booking
+Updating:Mangage tour, user, reviews, booking...
