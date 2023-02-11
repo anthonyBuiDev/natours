@@ -1,7 +1,7 @@
 /* eslint-disable */
 import '@babel/polyfill';
 import { displayMap } from './mapbox';
-import { login, logout, signup } from './auth';
+import { login, logout, signup, forgotPassword } from './auth';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 import { showAlert } from './alerts';
@@ -14,6 +14,8 @@ const userDataForm = document.querySelector('.form-user-data');
 const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
 const signupForm = document.querySelector('.form--signup');
+const forgotPasswordForm = document.querySelector('.form--forgotPassword');
+
 // DELEGATION
 if (mapBox) {
   const locations = JSON.parse(mapBox.dataset.locations);
@@ -38,6 +40,13 @@ if (signupForm)
     const password = document.getElementById('password').value;
     const passwordConfirm = document.getElementById('password-confirm').value;
     await signup({ name, email, password, passwordConfirm });
+  });
+
+if (forgotPasswordForm)
+  forgotPasswordForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const email = document.getElementById('email').value;
+    await forgotPassword(email);
   });
 
 if (userDataForm)

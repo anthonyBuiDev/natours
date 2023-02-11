@@ -1322,3 +1322,26 @@ body {
   -webkit-transform: translateY(-2px);
   transform: translateY(-2px);
 }
+
+.forgot {
+  color: #55c57a;
+  display: inline-block;
+  text-decoration: none;
+  padding: 2px;
+  -webkit-transition: all 0.2s;
+  transition: all 0.2s;
+  cursor: pointer;
+  font-size: 13px;
+  margin-top: 3px;
+}
+
+.forgot:hover {
+  background-color: #55c57a;
+  color: #fff;
+}
+
+.desc {
+  color: #55c57a;
+  font-size: 15px;
+  text-align: center;
+}

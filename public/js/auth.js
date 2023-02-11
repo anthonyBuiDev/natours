@@ -39,7 +39,6 @@ export const logout = async () => {
 
 export const signup = async data => {
   try {
-    console.log(data);
     const res = await axios({
       method: 'POST',
       url: '/api/v1/users/signup',
@@ -51,6 +50,23 @@ export const signup = async data => {
       window.setTimeout(() => {
         location.assign('/login');
       }, 1500);
+    }
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+  }
+};
+
+export const forgotPassword = async email => {
+  try {
+    const res = await axios({
+      method: 'POST',
+      url: '/api/v1/users/forgotPassword',
+      data: {
+        email
+      }
+    });
+    if (res.data.status === 'success') {
+      showAlert('success', 'Please check your email!');
     }
   } catch (err) {
     showAlert('error', err.response.data.message);
