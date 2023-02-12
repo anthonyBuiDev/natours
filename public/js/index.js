@@ -1,7 +1,7 @@
 /* eslint-disable */
 import '@babel/polyfill';
 import { displayMap } from './mapbox';
-import { login, logout, signup, forgotPassword } from './auth';
+import { login, logout, signup, forgotPassword, resetPassword } from './auth';
 import { updateSettings } from './updateSettings';
 import { bookTour } from './stripe';
 import { showAlert } from './alerts';
@@ -15,6 +15,7 @@ const userPasswordForm = document.querySelector('.form-user-password');
 const bookBtn = document.getElementById('book-tour');
 const signupForm = document.querySelector('.form--signup');
 const forgotPasswordForm = document.querySelector('.form--forgotPassword');
+const resetPasswordForm = document.querySelector('.form--resetPassword');
 
 // DELEGATION
 if (mapBox) {
@@ -45,8 +46,17 @@ if (signupForm)
 if (forgotPasswordForm)
   forgotPasswordForm.addEventListener('submit', async e => {
     e.preventDefault();
+    document.querySelector('.btn--forgot').textContent = 'Sending...';
     const email = document.getElementById('email').value;
     await forgotPassword(email);
+  });
+
+if (resetPasswordForm)
+  resetPasswordForm.addEventListener('submit', async e => {
+    e.preventDefault();
+    const password = document.getElementById('password').value;
+    const passwordConfirm = document.getElementById('password-confirm').value;
+    await resetPassword(password, passwordConfirm);
   });
 
 if (userDataForm)
