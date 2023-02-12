@@ -72,3 +72,25 @@ export const forgotPassword = async email => {
     showAlert('error', err.response.data.message);
   }
 };
+
+export const resetPassword = async (password, passwordConfirm) => {
+  try {
+    const res = await axios({
+      method: 'POST',
+      url: '/api/v1/users/resetPassword/:token',
+      data: {
+        password,
+        passwordConfirm
+      }
+    });
+
+    if (res.data.status === 'success') {
+      showAlert('success', 'Sign up successfully! Please log in');
+      window.setTimeout(() => {
+        location.assign('/login');
+      }, 1500);
+    }
+  } catch (err) {
+    showAlert('error', err.response.data.message);
+  }
+};
